@@ -8,23 +8,12 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="{% url 'posts:list' %}" class="site-title">My Blog</a>
-      <nav class="site-nav">
-        <a href="{% url 'posts:list' %}">Posts</a>
-        <a href="{% url 'posts:about' %}">About</a>
-      </nav>
-    </div>
-  </header>
-
   <main class="container">
     {% block content %}{% endblock %}
   </main>
-
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; {% now "Y" %} My Blog</p>
+      <p>&copy; {% now "Y" %}</p>
     </div>
   </footer>
 </body>

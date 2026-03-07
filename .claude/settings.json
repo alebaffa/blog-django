@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m pip --version)",
+      "Bash(python3 -m ensurepip --version)",
+      "Read(//usr/bin/**)",
+      "Bash(ls ~/.local/bin/pip*)",
+      "Bash(python3 -m venv /home/alebaffa/workspace/blog-django/venv)",
+      "Bash(/home/alebaffa/workspace/blog-django/venv/bin/pip install django gunicorn whitenoise dj-database-url psycopg2-binary python-dotenv Pillow)",
+      "Bash(sudo apt install -y python3.12-venv python3-pip)",
+      "Bash(pip install uv)",
+      "Bash(curl -LsSf https://astral.sh/uv/install.sh)",
+      "Bash(sh)",
+      "Bash(/home/alebaffa/.local/bin/uv venv)",
+      "Bash(/home/alebaffa/.local/bin/uv pip install django gunicorn whitenoise dj-database-url psycopg2-binary python-dotenv Pillow)",
+      "Bash(.venv/bin/django-admin startproject blog .)",
+      "Bash(.venv/bin/python manage.py startapp posts)",
+      "Bash(/home/alebaffa/workspace/blog-django/.venv/bin/pip freeze)",
+      "Bash(/home/alebaffa/workspace/blog-django/.venv/bin/python -m pip freeze)",
+      "Bash(/home/alebaffa/.local/bin/uv pip list --format=freeze)",
+      "Bash(/home/alebaffa/.local/bin/uv pip list)",
+      "Bash(/home/alebaffa/.local/bin/uv pip list --python .venv/bin/python)",
+      "Bash(/home/alebaffa/workspace/blog-django/requirements.txt:*)",
+      "Bash(.venv/bin/python manage.py makemigrations)",
+      "Bash(.venv/bin/python manage.py migrate)",
+      "Bash(.venv/bin/python manage.py check)",
+      "Bash(.venv/bin/python manage.py collectstatic --no-input)",
+      "Bash(git init)",
+      "Bash(git add .)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

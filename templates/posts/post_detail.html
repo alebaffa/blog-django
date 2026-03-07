@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markdown_extras %}
 
 {% block title %}{{ post.title }} | My Blog{% endblock %}
 
@@ -19,7 +20,7 @@
   {% endif %}
 
   <div class="post-body">
-    {{ post.body|linebreaks }}
+    {{ post.body|markdown }}
   </div>
 
   <footer class="post-footer">

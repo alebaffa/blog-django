@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}WaniKani Stats{% endblock %}
+
+{% block content %}
+<div class="wk-page">
+  <a href="{% url 'posts:list' %}" class="post-back">&larr; Home</a>
+
+  <h1 class="wk-heading">WaniKani Stats</h1>
+
+  {% if error %}
+  <p class="wk-error">Could not load stats: {{ error }}</p>
+
+  {% elif not stats %}
+  <p class="wk-empty">No stats available yet.</p>
+
+  {% else %}
+
+  <div class="wk-summary">
+    <div class="wk-summary-item">
+      <span class="wk-summary-value">{{ stats.overall_accuracy }}%</span>
+      <span class="wk-summary-label">Overall accuracy</span>
+    </div>
+    <div class="wk-summary-item">
+      <span class="wk-summary-value">{{ stats.overall_correct }}</span>
+      <span class="wk-summary-label">Correct answers</span>
+    </div>
+    <div class="wk-summary-item">
+      <span class="wk-summary-value">{{ stats.overall_total }}</span>
+      <span class="wk-summary-label">Total answers</span>
+    </div>
+    <div class="wk-summary-item">
+      <span class="wk-summary-value">{{ stats.total_subjects }}</span>
+      <span class="wk-summary-label">Items studied</span>
+    </div>
+  </div>
+
+  <table class="wk-table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Items</th>
+        <th>Meaning accuracy</th>
+        <th>Reading accuracy</th>
+        <th>Overall</th>
+        <th>Best meaning streak</th>
+        <th>Best reading streak</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for type, g in stats.by_type.items %}
+      {% if g.count %}
+      <tr>
+        <td class="wk-type wk-type-{{ type }}">{{ type|title }}</td>
+        <td>{{ g.count }}</td>
+        <td>
+          {% if g.meaning_accuracy is not None %}
+          <span class="wk-pct {% if g.meaning_accuracy >= 90 %}wk-good{% elif g.meaning_accuracy >= 75 %}wk-ok{% else %}wk-bad{% endif %}">
+            {{ g.meaning_accuracy }}%
+          </span>
+          {% else %}—{% endif %}
+        </td>
+        <td>
+          {% if g.reading_accuracy is not None %}
+          <span class="wk-pct {% if g.reading_accuracy >= 90 %}wk-good{% elif g.reading_accuracy >= 75 %}wk-ok{% else %}wk-bad{% endif %}">
+            {{ g.reading_accuracy }}%
+          </span>
+          {% else %}<span class="wk-muted">N/A</span>{% endif %}
+        </td>
+        <td>
+          {% if g.overall_accuracy is not None %}
+          <strong class="wk-pct {% if g.overall_accuracy >= 90 %}wk-good{% elif g.overall_accuracy >= 75 %}wk-ok{% else %}wk-bad{% endif %}">
+            {{ g.overall_accuracy }}%
+          </strong>
+          {% else %}—{% endif %}
+        </td>
+        <td>{{ g.meaning_max_streak }}</td>
+        <td>
+          {% if g.reading_max_streak %}{{ g.reading_max_streak }}{% else %}<span class="wk-muted">N/A</span>{% endif %}
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="wk-note">Stats are cached for 1 hour.</p>
+  {% endif %}
+</div>
+{% endblock %}

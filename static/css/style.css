@@ -172,6 +172,105 @@ a { color: inherit; text-decoration: none; }
   color: var(--muted);
 }
 
+/* ── Home nav ────────────────────────────────── */
+
+.home-nav {
+  padding: 0.75rem 0 0.25rem;
+  font-size: 0.85rem;
+}
+.home-nav a { color: var(--muted); }
+.home-nav a:hover { color: var(--text); }
+
+/* ── WaniKani stats page ─────────────────────── */
+
+.wk-page { padding: 3rem 0 4rem; }
+
+.wk-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.wk-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.wk-summary-item {
+  background: var(--bg);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.wk-summary-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.wk-summary-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.wk-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.wk-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.wk-table tr:last-child td { border-bottom: none; }
+
+.wk-type { font-weight: 600; }
+.wk-type-radical   { color: #00a8e8; }
+.wk-type-kanji     { color: #e44ac8; }
+.wk-type-vocabulary { color: #9b5ccf; }
+.wk-type-kana_vocabulary { color: #7b61c8; }
+
+.wk-pct { font-variant-numeric: tabular-nums; }
+.wk-good { color: #16a34a; }
+.wk-ok   { color: #ca8a04; }
+.wk-bad  { color: #dc2626; }
+.wk-muted { color: var(--muted); }
+
+.wk-note  { font-size: 0.8rem; color: var(--muted); }
+.wk-error { color: #dc2626; font-size: 0.9rem; }
+.wk-empty { color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 540px) {
+  .wk-summary { grid-template-columns: repeat(2, 1fr); }
+  .wk-table th:nth-child(n+5),
+  .wk-table td:nth-child(n+5) { display: none; }
+}
+
 /* ── Responsive ──────────────────────────────── */
 
 @media (max-width: 480px) {

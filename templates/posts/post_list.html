@@ -10,6 +10,10 @@
 
 <hr class="divider">
 
+<nav class="home-nav">
+  <a href="{% url 'wanikani:stats' %}">WaniKani Stats &rarr;</a>
+</nav>
+
 <section class="posts-list">
   {% if active_tag %}
   <p class="filter-note">Showing posts tagged <strong>#{{ active_tag }}</strong> &mdash; <a href="{% url 'posts:list' %}">clear filter</a></p>

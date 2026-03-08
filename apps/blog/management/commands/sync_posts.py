@@ -1,11 +1,13 @@
+import datetime
 import frontmatter
 from pathlib import Path
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.utils.text import slugify
 from django.utils import timezone
-from posts.models import Post, Tag
+from apps.blog.models import Post, Tag
 
-CONTENT_DIR = Path(__file__).resolve().parents[3] / 'content' / 'posts'
+CONTENT_DIR = settings.BASE_DIR / 'apps' / 'blog' / 'content' / 'posts'
 
 
 class Command(BaseCommand):
@@ -32,7 +34,6 @@ class Command(BaseCommand):
             published_at = post_meta.get('published_at')
             excerpt = post_meta.get('excerpt', '')
 
-            import datetime
             if published_at and isinstance(published_at, datetime.date) and not isinstance(published_at, datetime.datetime):
                 published_at = timezone.make_aware(datetime.datetime(published_at.year, published_at.month, published_at.day))
             elif published_at and isinstance(published_at, datetime.datetime) and timezone.is_naive(published_at):

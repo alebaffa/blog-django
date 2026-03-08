@@ -1,0 +1,5 @@
+{
+    "workbench.externalBrowser": "firefox",
+    "chat.unifiedAgentsBar.enabled": true,
+    "chat.agentSessionProjection.enabled": true
+}

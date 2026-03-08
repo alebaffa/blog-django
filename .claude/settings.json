@@ -33,7 +33,18 @@
       "Bash(git push -u origin main)",
       "Bash(git add render.yaml README.md)",
       "Bash(/home/alebaffa/.local/bin/uv pip install --python .venv/bin/python markdown python-frontmatter)",
-      "Bash(.venv/bin/python manage.py sync_posts)"
+      "Bash(.venv/bin/python manage.py sync_posts)",
+      "Bash(git add templates/ static/)",
+      "WebFetch(domain:docs.api.wanikani.com)",
+      "Bash(.venv/bin/python manage.py startapp wanikani)",
+      "Bash(/home/alebaffa/.local/bin/uv pip install --python .venv/bin/python requests==2.32.3)",
+      "Bash(.venv/bin/python -c \":*)",
+      "Bash(git add wanikani/ templates/wanikani/ templates/posts/post_list.html static/css/style.css blog/settings.py blog/urls.py requirements.txt .env.example)",
+      "Bash(cp -r posts apps/blog)",
+      "Bash(cp -r wanikani apps/wanikani)",
+      "Bash(cp -r templates apps/templates)",
+      "Bash(cp -r content apps/blog/content)",
+      "Bash(git add -A)"
     ]
   }
 }

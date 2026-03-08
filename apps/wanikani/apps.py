@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class WanikaniConfig(AppConfig):
-    name = 'wanikani'
+    name = 'apps.wanikani'
+    label = 'wanikani'

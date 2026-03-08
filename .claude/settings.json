@@ -44,7 +44,11 @@
       "Bash(cp -r wanikani apps/wanikani)",
       "Bash(cp -r templates apps/templates)",
       "Bash(cp -r content apps/blog/content)",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(make sync_posts)",
+      "Bash(make install)",
+      "Bash(make lint)",
+      "Bash(make lint-fix)"
     ]
   }
 }

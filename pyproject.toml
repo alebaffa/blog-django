@@ -1,0 +1,17 @@
+[tool.pylint.main]
+load-plugins = ["pylint_django"]
+django-settings-module = "config.settings"
+ignore-paths = ["apps/blog/migrations"]   # auto-generated, not our code
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-module-docstring",   # personal project, not a library
+    "missing-class-docstring",
+    "missing-function-docstring",
+]
+
+[tool.pylint.design]
+max-locals = 20   # sync_posts legitimately handles many variables
+
+[tool.isort]
+profile = "black"   # makes isort and black agree on import formatting

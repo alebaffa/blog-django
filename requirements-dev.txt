@@ -1,0 +1,8 @@
+-r requirements.txt
+ruff
+black
+isort
+pylint
+pylint-django
+mypy
+django-stubs[compatible-mypy]

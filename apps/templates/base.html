@@ -7,7 +7,7 @@
   <title>{% block title %}My Blog{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body class="theme-{{ theme }}">
   <main class="container">
     {% block content %}{% endblock %}
   </main>

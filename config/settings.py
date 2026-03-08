@@ -51,6 +51,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "apps.blog.context_processors.theme",
             ],
         },
     },
@@ -97,6 +98,9 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Theme: slate | warm-paper | forest | dark
+BLOG_THEME = os.environ.get("BLOG_THEME", "slate")
 
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

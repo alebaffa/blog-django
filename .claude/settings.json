@@ -48,7 +48,9 @@
       "Bash(make sync_posts)",
       "Bash(make install)",
       "Bash(make lint)",
-      "Bash(make lint-fix)"
+      "Bash(make lint-fix)",
+      "Bash(git add README.md)",
+      "Bash(git push)"
     ]
   }
 }

@@ -60,17 +60,17 @@ body.theme-forest {
 
 /* Dark: near-black, bright blue accent */
 body.theme-dark {
-  --bg:           #0f1117;
-  --surface:      #161b24;
-  --text:         #e2e8f0;
-  --muted:        #7a8a9e;
+  --bg:           #1a1e2e;
+  --surface:      #222740;
+  --text:         #cdd6f4;
+  --muted:        #7a83a6;
   --accent:       #4a9eff;
   --accent-hover: #6cb2ff;
-  --border:       #252d3a;
-  --tag-bg:       #1e2838;
-  --code-bg:      #1e2838;
-  --pre-bg:       #090c12;
-  --pre-text:     #dde6f0;
+  --border:       #2e364f;
+  --tag-bg:       #272d45;
+  --code-bg:      #272d45;
+  --pre-bg:       #141828;
+  --pre-text:     #cdd6f4;
   --name-font:    system-ui, -apple-system, sans-serif;
 }
 

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Mastodon Feed{% endblock %}
+
+{% block content %}
+<div class="masto-page">
+  <a href="{% url 'posts:list' %}" class="post-back">&larr; Home</a>
+
+  <h1 class="masto-heading">Mastodon</h1>
+  <p class="masto-handle"><a href="https://famichiki.jp/@alebaffa2" target="_blank" rel="noopener noreferrer">@alebaffa2@famichiki.jp</a></p>
+
+  {% if error %}
+  <p class="masto-error">Could not load feed: {{ error }}</p>
+
+  {% else %}
+
+  <section class="masto-section">
+    <h2 class="masto-section-title">Posts</h2>
+
+    {% if posts %}
+    <div class="masto-list">
+      {% for status in posts %}
+      <article class="masto-item">
+        {% include "mastodon/_icon_mastodon.html" %}
+        <div class="masto-content">{{ status.content|safe }}</div>
+        <footer class="masto-meta">
+          <a href="{{ status.url }}" target="_blank" rel="noopener noreferrer" class="masto-link">View on Mastodon</a>
+          <time class="masto-date" datetime="{{ status.created_at }}">{{ status.created_at|slice:":10" }}</time>
+        </footer>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="masto-empty">No posts found.</p>
+    {% endif %}
+  </section>
+
+  <section class="masto-section">
+    <h2 class="masto-section-title">Replies</h2>
+
+    {% if replies %}
+    <div class="masto-list">
+      {% for status in replies %}
+      <article class="masto-item masto-item--reply">
+        {% include "mastodon/_icon_mastodon.html" %}
+        <div class="masto-content">{{ status.content|safe }}</div>
+        <footer class="masto-meta">
+          <a href="{{ status.url }}" target="_blank" rel="noopener noreferrer" class="masto-link">View on Mastodon</a>
+          <time class="masto-date" datetime="{{ status.created_at }}">{{ status.created_at|slice:":10" }}</time>
+        </footer>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="masto-empty">No replies found.</p>
+    {% endif %}
+  </section>
+
+  <p class="masto-note">Feed cached for 15 minutes.</p>
+  {% endif %}
+</div>
+{% endblock %}

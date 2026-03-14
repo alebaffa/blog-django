@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps.blog",
     "apps.wanikani",
+    "apps.mastodon",
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Theme: slate | warm-paper | forest | dark
 BLOG_THEME = os.environ.get("BLOG_THEME", "slate")
+
+# Author info displayed in the about section
+BLOG_AUTHOR_NAME = os.environ.get("BLOG_AUTHOR_NAME", "Alessandro Baffa")
+BLOG_AUTHOR_BIO = os.environ.get("BLOG_AUTHOR_BIO", "Software engineer. I write about things I find interesting.")
 
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

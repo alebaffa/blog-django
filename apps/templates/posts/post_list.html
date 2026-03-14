@@ -4,17 +4,27 @@
 
 {% block content %}
 <section class="about">
-  <h1 class="about-name">Your Name</h1>
-  <p class="about-bio">Software engineer. I write about things I find interesting — mostly code, tools, and ideas. Based somewhere on Earth.</p>
+  <h1 class="about-name">{{ author_name }}</h1>
+  <p class="about-bio">{{ author_bio }}</p>
 </section>
 
 <hr class="divider">
 
 <nav class="home-nav">
   <a href="{% url 'wanikani:stats' %}">WaniKani Stats &rarr;</a>
+  <a href="{% url 'mastodon:feed' %}">Mastodon &rarr;</a>
 </nav>
 
 <section class="posts-list">
+  {% if tags %}
+  <nav class="tag-menu">
+    <a href="{% url 'posts:list' %}" class="tag-chip {% if not active_tag %}tag-chip--active{% endif %}">All</a>
+    {% for tag in tags %}
+    <a href="{% url 'posts:tag_detail' tag.slug %}" class="tag-chip {% if active_tag.slug == tag.slug %}tag-chip--active{% endif %}">#{{ tag }}</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+
   {% if active_tag %}
   <p class="filter-note">Showing posts tagged <strong>#{{ active_tag }}</strong> &mdash; <a href="{% url 'posts:list' %}">clear filter</a></p>
   {% endif %}
@@ -33,11 +43,11 @@
   {% if posts.has_other_pages %}
   <nav class="pagination">
     {% if posts.has_previous %}
-    <a href="?page={{ posts.previous_page_number }}{% if active_tag %}&tag={{ active_tag.slug }}{% endif %}">&larr;</a>
+    <a href="{% if active_tag %}{% url 'posts:tag_detail' active_tag.slug %}{% else %}{% url 'posts:list' %}{% endif %}?page={{ posts.previous_page_number }}">&larr;</a>
     {% endif %}
     <span>{{ posts.number }} / {{ posts.paginator.num_pages }}</span>
     {% if posts.has_next %}
-    <a href="?page={{ posts.next_page_number }}{% if active_tag %}&tag={{ active_tag.slug }}{% endif %}">&rarr;</a>
+    <a href="{% if active_tag %}{% url 'posts:tag_detail' active_tag.slug %}{% else %}{% url 'posts:list' %}{% endif %}?page={{ posts.next_page_number }}">&rarr;</a>
     {% endif %}
   </nav>
   {% endif %}

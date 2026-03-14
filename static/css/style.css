@@ -149,6 +149,27 @@ a:hover { color: var(--accent-hover); }
 .filter-note a { text-decoration: underline; color: var(--muted); }
 .filter-note a:hover { color: var(--text); }
 
+.tag-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag-chip {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  transition: border-color 0.12s, color 0.12s;
+}
+.tag-chip:hover,
+.tag-chip--active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .post-row {
   display: flex;
   justify-content: space-between;
@@ -319,6 +340,46 @@ a:hover { color: var(--accent-hover); }
 .wk-note  { font-size: 0.8rem; color: var(--muted); }
 .wk-error { color: #dc2626; font-size: 0.9rem; }
 .wk-empty { color: var(--muted); font-size: 0.9rem; }
+
+/* ── Mastodon feed ───────────────────────────────────────────────────────── */
+
+.masto-page { padding-top: 2rem; }
+.masto-heading { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+.masto-handle { font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; }
+.masto-handle a { color: var(--muted); }
+.masto-section { margin-bottom: 3rem; }
+.masto-section-title { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 1.25rem; }
+
+.masto-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.masto-item {
+  position: relative;
+  padding: 1.25rem 1.5rem 1.25rem 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card-bg, var(--bg));
+}
+.masto-item--reply { opacity: 0.85; }
+
+.masto-icon {
+  position: absolute;
+  top: 1rem;
+  left: 0.75rem;
+  width: 14px;
+  height: 14px;
+  color: rgb(86 58 204);
+}
+
+.masto-content { font-size: 0.95rem; line-height: 1.6; }
+.masto-content a { color: var(--accent); }
+.masto-content p { margin: 0 0 0.5rem; }
+.masto-content p:last-child { margin-bottom: 0; }
+
+.masto-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.8rem; color: var(--muted); }
+.masto-link { color: var(--accent); }
+.masto-error { color: #dc2626; font-size: 0.9rem; }
+.masto-empty { color: var(--muted); font-size: 0.9rem; }
+.masto-note { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 

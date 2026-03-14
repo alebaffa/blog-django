@@ -29,6 +29,26 @@ def post_list(request):
     )
 
 
+def tag_detail(request, slug):
+    active_tag = get_object_or_404(Tag, slug=slug)
+    posts = Post.objects.filter(status=Post.Status.PUBLISHED, tags=active_tag)
+
+    paginator = Paginator(posts, 5)
+    page = request.GET.get("page")
+    posts = paginator.get_page(page)
+
+    tags = Tag.objects.filter(posts__status=Post.Status.PUBLISHED).distinct()
+    return render(
+        request,
+        "posts/post_list.html",
+        {
+            "posts": posts,
+            "tags": tags,
+            "active_tag": active_tag,
+        },
+    )
+
+
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, status=Post.Status.PUBLISHED)
     return render(request, "posts/post_detail.html", {"post": post})
